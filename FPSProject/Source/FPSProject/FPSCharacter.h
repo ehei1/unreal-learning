@@ -37,4 +37,24 @@ public:
 
 	UFUNCTION()
 	void StopJump();
+
+	// 발사 처리
+	UFUNCTION()
+	void Fire();
+
+	// FPS 카메라
+	UPROPERTY(VisibleAnywhere)
+	class UCameraComponent* FPSCameraComponent;
+
+	// 일인칭 메시 (팔), 소유 플레이어에게만 보입니다.
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+	class USkeletalMeshComponent* FPSMesh;
+
+	// 카메라 위치에서의 총구 오프셋
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	FVector MuzzleOffset;
+
+	// 스폰시킬 프로젝타일 클래스
+	UPROPERTY(EditDefaultsOnly, Category = Projectile)
+	TSubclassOf<class AFPSProjectile> ProjectileClass;
 };
